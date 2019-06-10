@@ -1,0 +1,20 @@
+<div class="MyFlex">
+<div class="leftImage"></div>
+<div class="Centrimage"></div>
+<div class="RightImage"></div>
+</div>
+<div class="">
+    {% for foto in content_data.galery %}
+    <div>
+        <a href="{{ domain }}/image/{{ foto.id_galery }}" target="_blank" >
+            <img src="{{ domain }}/{{ UPLOAD_DIR }}/{{foto.hash_file}}" width="300px" height="300px"/></a>
+        <br>
+        <p>Количество просмотров: {{ foto.view }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% if content_data.out_row %}
+<span id="button_see_additional_goods">
+<a href="javascript:see_additional_goods('.button2')" class="button2" tabindex="0" count_tovar="2" current_record="{{ content_data.current_record }}" category="{{ content_data.category }}">кнопка</a>
+</span>
+{% endif %}

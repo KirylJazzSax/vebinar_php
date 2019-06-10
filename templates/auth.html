@@ -1,0 +1,44 @@
+{% if isAuth == false %}
+<form action="{{domain}}" method="post">
+<label for="username" class="text">Login</label><input type="text" id="username" name="username" placeholder="user"><br>
+<label for="password" class="text">Password</label><input type="password" id="password" name="password" placeholder="qwerty"><br>
+<label for="rememberme" class="text">Remember: </label><input type="checkbox" name="rememberme" id="rememberme" />
+<input type="button" name="Submgin" value="Go" onclick="register()" /><a href="/register" class="text link">Register</a>
+</form>
+
+{% endif %}
+
+<br>
+
+{% if isAuth %}
+<form action="" method="post">
+<p class="text">Perfect! Your username is {{ isAuth.0.login }}</p>
+<input type="submit" name="ExitLogin" value="Log out" />
+</form>
+<p class="text">Role {{ role }}</p>
+
+{% if role == 1 %}
+	<p class="text">Вы вошли под пользователем, который имеет возможность просмотра контента. Права доступа не отличаются от незарегистрированных пользователей. </p>
+{% endif %}
+
+{% if role == 2 %}
+	<p class="text">Вы вошли под пользователем, который обладает правом  добавлять статьи и их редактировать. </p>
+{% endif %}
+
+{% if role == 3 %}
+	<p class="text">Вы вошли под пользователем, который обладает правом  менять содержимое страниц, просматривать содержимое заказов, корзин пользователей. Так же обладают всеми правами категории пользователей editor </p>
+{% endif %}
+
+
+{% if role == 4 %}
+	<p class="text">Вы вошли под пользователем, который обладает всеми правами и имеющий полный доступ. </p>
+{% endif %}
+
+{% endif %}
+
+
+
+
+
+
+

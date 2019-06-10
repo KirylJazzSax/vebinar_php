@@ -1,0 +1,37 @@
+<div class="new_products"><a href="">{{ content_data.0.name_category }}</a></div>
+{% set sale %}
+    <div class="triangle_2"><div class="triangle_text_2">HOT</div></div>
+{% endset %}
+
+{% set new %}
+    <div class="triangle"><div class="triangle_text">NEW</div></div>
+{% endset %}
+
+
+<div class="new_products_contents">
+    {% for products in content_data %}
+    {% set salePrice %}
+    <div class="product_price">€.{{ products.salePrice }}</div>
+    <div class="product_price_2">€.{{ products.price }}</div>
+    {% endset %}
+
+    {% set price %}
+    <div class="product_price">€.{{ products.price }}</div>
+    {% endset %}
+
+    <div class="new_products_content">
+
+        {% for key,product in new_products %}
+        {{ key == products.ID_UUID ? new }}
+        {% endfor %}
+
+        {{ products.status == 1 ? sale }}
+
+        <div class="picture"><a href="{{ domain }}/good/{{ products.id }}"><img src="{{domain}}{{ img }}{{ products.img }}"></a></div>
+        <div class="nameAndPrice">
+            <div class="product_name"><a href="{{ domain }}/good/{{ products.id }}">{{ products.name }}</a></div>
+            {{ products.status == 1 ? salePrice : price }}
+        </div>
+    </div>
+    {% endfor %}
+</div>

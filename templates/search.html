@@ -1,0 +1,37 @@
+{% set sale %}
+    <div class="triangle_2"><div class="triangle_text_2">HOT</div></div>
+{% endset %}
+
+{% set new %}
+    <div class="triangle"><div class="triangle_text">NEW</div></div>
+{% endset %}
+
+
+<div class="new_products"><a href="">Search</a></div>
+    <div class="new_products_contents">
+        {% for search in search %}
+            {% set salePrice %}
+                <div class="product_price">€.{{ search.salePrice }}</div>
+                <div class="product_price_2">€.{{ search.price }}</div>
+            {% endset %}
+
+            {% set price %}
+                <div class="product_price">€.{{ search.price }}</div>
+            {% endset %}
+
+        <div class="new_products_content">
+
+            {% for key,product in new_products %}
+                {{ key == search.ID_UUID ? new }}
+            {% endfor %}
+
+            {{ search.status == 1 ? sale }}
+
+            <div class="picture"><a href="{{ domain }}/good/{{ search.id }}"><img src="{{domain}}{{ img }}{{ search.img }}"></a></div>
+            <div class="nameAndPrice">
+                <div class="product_name"><a href="{{ domain }}/good/{{ search.id }}">{{ search.name }}</a></div>
+                {{ search.status == 1 ? salePrice : price }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>

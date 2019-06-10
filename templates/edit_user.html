@@ -1,0 +1,68 @@
+{% set checked = 'checked' %}
+<div class="register">
+    <form action="" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input type="number" id="id_user" name="id_user" value="{{ user.id_user }}" hidden>
+            <legend class="text">Параметры входа</legend>
+            <label for="login" class="text">Ваш login</label>
+            <input name="login" id="login" placeholder="login" autofocus required pattern="\S+[A-z]" value="{{user.login}}"><br>
+        </fieldset>
+        <fieldset>
+            <legend class="text">Контактная информация</legend>
+            <label for="surname" class="text">Фамилия <em>*</em></label>
+            <input name="surname" id="surname" placeholder="Иванов" autofocus required value="{{user.surname}}"><br>
+            <label for="name" class="text">Имя <em>*</em></label>
+            <input name="name" id="name" placeholder="Иван" required value="{{user.name}}"><br>
+            <label for="patronymic" class="text">Отчество</label>
+            <input name="patronymic" id="patronymic" placeholder="Сидорович" value="{{user.patronymic}}"><br>
+            <label for="telephone" class="text">Телефон <em>*</em></label>
+            <input name="telephone" id="telephone" placeholder="+7-903-955-55-55" value="{{user.telephone}}" required><br>
+            <label for="email" class="text">Email <em>*</em></label>
+            <input name="email" id="email" placeholder="email@server.com" required pattern="\S+@[a-z]+.[a-z]+" value="{{user.email}}"><br>
+        </fieldset>
+        <fieldset>
+            <legend class="text">Персональная информация</legend>
+            <label for="age" class="text">Возраст<em>*</em></label> <input name="age" id="age" type="number" required min="14" max="100" value="{{user.age}}"><br>
+            <label for="gender" class="text">Пол <em>*</em></label>
+            <select name="gender" id="gender">
+                {% if user.gender == 'male'%}
+                <option selected value="male">Мужской</option>
+                <option value="female">Женский</option>
+                {% else %}
+                <option value="male" >Мужской</option>
+                <option selected value="female">Женский</option>
+                {% endif %}
+            </select><br>
+            <label for="comments" class="text">Дополнительная информация:</label>
+            <textarea name="comments" id="comments" placeholder="{{user.comments}}"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend class="text">Выберите ваши увлечения</legend>
+            <label for="sport" class="text">
+                <input name="sport" id="sport" type="checkbox" {{user.sport ? checked : false}}>Спорт</label>
+            <label for="turist" class="text">
+                <input name="turist" id="turist" type="checkbox" {{user.turist ? checked : false}}>Туризм</label>
+            <label for="padi" class="text">
+                <input name="padi" id="padi" type="checkbox" {{user.padi ? checked : false}}>Дайвинг</label>
+            <label for="travels" class="text">
+                <input name="travels" id="travels" type="checkbox" {{user.travels ? checked : false}}>Путешествия</label>
+            <label for="auto" class="text">
+                <input name="auto" id="auto" type="checkbox" {{user.auto ? checked : false}}>Автомобили</label>
+            <label for="it" class="text">
+                <input name="it" id="it" type="checkbox" {{user.it ? checked : false}}>IT</label>
+        </fieldset>
+
+        <fieldset>
+            <legend class="text">Введите пароль чтобы обновить информацию!</legend>
+            <input name="pass" id="pass" type="password" placeholder="4[gB33g.0d,Ryd-d!" required pattern="[^\s]{6,30}"><br>
+        </fieldset>
+        <div class="picture_product"><img src="{{ domain }}{{ img }}{{ user.img }}"></div>
+        <br>
+        <label for="img_user" class="text">Поменять фотографию? </label><input type="file" id="img_user" name="img_user" /><br>
+        <p><input type="submit" name="submit" value="Отправить информацию"></p>
+    </form>
+</div>
+
+
+

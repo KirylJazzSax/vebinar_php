@@ -1,0 +1,25 @@
+{% set change %}
+    <a href="/editor/edit/{{ article.id_article }}" class="link text">Изменить статью?</a>
+{% endset %}
+
+{% for article in content_data %}
+<div class="new_products"><a href="">{{article.title}}</a></div>
+<div class="new_products_contents_product">
+    <div class="new_products_contents_product">
+        <div class="picture_product"><a href=""><img src="{{ img }}{{ article.img }}"></a></div>
+        <hr>
+        <div class="short_description">
+            <h4>Description</h4>
+            {{ article.description }}</div>
+        <hr>
+        <div class="nameAndPrice_product">
+            <div class="views">Колличество просмотров: {{ article.view }}</div>
+            {{ role_info == 'editor' ? change }}
+        </div>
+        <div class="description">
+            <h4>Article</h4>
+            {{ article.description }}
+        </div>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+<div class="top_products"><a href="">SALE PRODUCTS</a></div>
+        <div class="new_products_contents">
+            {% for product in sale_products %}
+                        <div class="new_products_content">
+                            <div class="triangle_2"><div class="triangle_text_2">HOT</div></div>
+                                <div class="picture"><a href="{{ domain}}/good/{{ product.id }}"><img src="{{ img }}{{ product.img }}"></a></div>
+                                <div class="nameAndPrice">
+                                    <div class="product_name"><a href="{{ domain}}/good/{{ product.id }}">{{ product.name }}</a></div>
+                                <div class="product_price">€.{{ product.salePrice }}</div>
+                                <div class="product_price_2">€.{{ product.price }}</div>
+                                </div>
+                        </div>
+                    {% endfor %}
+        </div>

@@ -1,0 +1,25 @@
+{% block articles %}
+{% for articles in content_data %}
+{% set editor %}
+    <p class="text">Редактор: {{ articles.name }}, {{ articles.surname }}</p>
+    <p class="text"><a href="/editor/id/{{ articles.id_editor }}" class="link">Посмотреть её статьи?</a></p>
+{% endset %}
+    <div class="article">
+                <hr><br>
+                <div class="new_products"><a href="{{ domain }}/{{ page }}/edit/{{ articles.id_article }}">Статья: {{ articles.title }}</a></div>
+                <p class="text">Описание: {{ articles.description }}</p>
+                <p class="text">Автор: {{ articles.author }}</p>
+                {% block link %}
+                {{ role_info == 'admin' ? editor }}
+                {% endblock %}
+                <hr>
+    </div>
+{% endfor %}
+{% if out_row %}
+    <input type="button" class="button_show_more" name="show_more" current_record="{{ current_record }}" id="show_more"
+           value="Ещё статьи" model="{{ model }}" view="{{ template }}" method="{{ method }}" editor="{{ data }}">
+{% endif %}
+{% endblock %}
+
+
+

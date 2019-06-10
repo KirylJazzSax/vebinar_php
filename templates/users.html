@@ -1,0 +1,19 @@
+{% block user %}
+    {% for key, user in content_data %}
+        <div class="new_products"><a href="/user/{{user.id_user}}">Логин: {{ key }}</a></div>
+        <p class="text">Имя: {{ user.name }}</p>
+        <p class="text">Фамилия: {{ user.surname }}</p>
+        {% block link %}
+            <p class="text"><a href="/user/{{user.id_user}}" class="link">Поменять данные пользователя?</a></p>
+        {% endblock %}
+    {% endfor %}
+{% endblock %}
+{% block show_page %}
+    {% if out_row %}
+        <span class="text">Страница:</span>
+            {% for page in out_row %}
+                <input type="button" name="show_page" class="{{ page }}" current_record="{{ current_record }}" id="show_page"
+                   value="{{ page }}" model="{{ model }}" view="{{ template }}" method="{{ method }}" onclick="see_more(this)">
+            {% endfor %}
+    {% endif %}
+{% endblock %}

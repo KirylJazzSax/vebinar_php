@@ -1,0 +1,18 @@
+{% block user_info %}
+    {% for user in content_data %}
+        <div class="new_products"></a>Привет {{user.name}} {{user.surname}}!</div>
+        <div class="new_products_contents_product">
+            <div class="picture_product"><img src="{{ domain }}{{ img }}{{ user.img }}"></a></div>
+            <hr>
+            <div class="short_description">
+                <h4>Добро пожаловать</h4>
+                <p>Ваш електронный адрес: {{user.email}}</p>
+                <p>Ваш телефон: {{user.telephone}}</p>
+                {% block link %}
+                    <p><a href="{{ domain }}/{{ page }}/edit/{{ user.id_user }}" class="link">Поменяем ваши личные данные?</a></p>
+                {% endblock %}
+            </div>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}

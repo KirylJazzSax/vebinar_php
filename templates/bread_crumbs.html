@@ -1,0 +1,30 @@
+﻿<div class="menu">
+        <ul class="menu_list">
+            <li class="menu_content_1">
+        <a href="" class="menu_text_1">MENU</a>
+        <ul class="menu_list_drop" id="menu">
+        {% for key, item in navigation %}
+        <li class="menu_content_2">
+            <a href="{{ domain }}/{{ item.url }}" class="menu_text_2">{{ item.name }}</a>
+        </li>
+        {% endfor %}
+        </ul>
+            </li>
+        </ul>
+
+        <div class="authorization" id="autorize">
+            {% include 'auth.html' %}
+        </div>
+        <div class="authorization">
+            <label for="search" class="text">Поиск товара</label>
+            <input type="text" id="search" name="search">
+        </div>
+        <div class="menu_b">
+            <div class="menu_2"><a href="#" class="menu_2_link"></a>
+                <div class="menu_2_text">NOW IS OPEN!</div>
+            </div>
+        </div>
+    </div>
+
+
+    

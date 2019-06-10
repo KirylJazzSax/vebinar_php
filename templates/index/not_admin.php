@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+    {% block content %}
+        <h1 class="text_bold_italic">Вы не обладаете правами администратора!</h1>
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

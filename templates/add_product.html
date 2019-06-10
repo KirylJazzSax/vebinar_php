@@ -1,0 +1,56 @@
+{% set sale = (product.price - product.salePrice) / product.price * 100 %}
+
+{% set checked = 'checked' %}
+
+{% set selected = 'selected' %}
+
+{% set add %}
+    <p><input type="submit" name="add_product" value="Добавить товар"></p>
+{% endset %}
+{% set edit %}
+    <p><input type="submit" name="edit_product" value="Именить товар"></p>
+{% endset %}
+{% set image %}
+    <p><img src="{{ domain }}/{{ img }}/{{ product.img }}" class="image" alt=""></p>
+{% endset %}
+
+<form action="" method="post" enctype="multipart/form-data" id="product">
+    <fieldset>
+        <legend class="text">О товаре</legend>
+        <p><label for="name" class="text">Имя товара: </label>
+        <input type="text" id="name" name="name" value="{{ product.name }}" required></p>
+        <p><label for="price" class="text">Цена: </label>
+        <input type="number" id="price" name="price" value="{{ product.price }}" min="1.00" step="0.01" required><br></p>
+        <p><label for="status" class="text">Статус товара: </label>
+        <select name="status" id="status">
+            <option value="regular" {{ product.status == 0 ? selected : false}}>Не на скидке</option>
+            <option value="on_sale" {{ product.status == 1 ? selected : false}}>На скидке</option>
+        </select></p>
+        <div id="for_sale" hidden>
+            <label for="sale" class="text">Сколько процентов скидка? </label>
+            <input type="number" name="sale" id="sale" value="{{ sale|number_format(0) }}" min="1" step="1"><br>
+        </div>
+        <fieldset>
+            <legend class="text">Выберите категорию:</legend>
+            {% for categories in content_data.categories %}
+            <p class="text">{{ categories.name|capitalize }}</p>
+                {% for category in categories.child %}
+                <input type="radio" name="category" value="{{ category.id_category }}"
+                       {{ category.id_category == product.id_category ? checked : false}}>
+                <span class="text" required>{{ category.name }}</span>
+                {% endfor %}
+            {% endfor %}
+        </fieldset>
+        <p><label for="description" class="text">Описание товара:</label></p>
+        <textarea name="description" id="description" class="text" cols="30" rows="10" required>{{ product.description }}</textarea><br>
+        <p><label for="short_description" class="text">Краткое описание товара:</label></p>
+        <textarea name="short_description" id="short_description" class="text" cols="30" rows="10" required>{{ product.short_description }}</textarea><br>
+        <p><label for="uid" class="text">Уникальный id товара:</label>
+        <input type="text" name="uid" id="uid" size="100%" value="{{ product.ID_UUID }}" required></p>
+    </fieldset>
+    <p><label for="img_user" class="text">Добавить фото!</label></p>
+    <p><input type="file" name="img_user" id="img_user"></p>
+    {{ product ? edit : add }}
+</form>
+    {{ product ? image }}
+

@@ -1,0 +1,86 @@
+<html>
+{% include 'head.html' %}
+<body>
+<div class="container">
+    {% include 'header.html' %}
+    <div class="content">
+        <div class="content_inside">
+            <div class="menuProducts">
+                {% include 'bread_crumbs.html' %}
+                <div class="products show_search_result">
+                    {% block before_content %}{% endblock %}
+                    {% block content %}
+                        {% include 'new-product.html' %}
+                        {% include 'top-product.html' %}
+                        {% include 'sale-product.html' %}
+                    {% endblock %}
+                </div>
+            </div>
+            {% include 'brand.html' %}
+            {% include 'instagram.html' %}
+
+            <div class="sosial_big">
+                <div class="facebook"><a href="https://www.facebook.com/?ref=tn_tnmn">
+                    <i class="fab fa-facebook-f"></i></a></div>
+                <div class="twitter"><a href="https://twitter.com/login?lang=ru">
+                    <i class="fab fa-twitter"></i></a></div>
+                <div class="printest"><a href="https://www.pinterest.com/">
+                    <i class="fab fa-pinterest-p"></i></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+{% extends 'product.html' %}
+{% block button %}
+    <div class="buy"><input type="button" name="addToBasket" value="Удалить товар!"
+                            id="{{ product.id }}"
+                            count="{{ product.count }}"
+                            prim="Delete from UserModel"
+                            data-product-guid="{{ product.ID_UUID }}"
+                            user="{{ product.id_user }}"
+                            model="{{ model }}"
+                            method="{{ method }}"
+                            view="{{ template }}"
+                            onclick="clear_basket_one('#{{ product.id }}')">
+    </div>
+{% endblock %}
+
+{% block view %}
+        <div class="views">Колличество товаров в корзине: {{ product.count }}</div>
+{% endblock %}
+
+{% block description %}{% endblock %}
+

@@ -1,0 +1,10 @@
+                    <div class="insta">
+                        <div class="logo_insta"><a href="https://www.instagram.com/?hl=ru" target="blank">
+                                <i class="fab fa-instagram"></i>
+                            Instagram feed:<span>#saxmuz</span></a></div>
+                        <div class="photos">
+                            {% for photo in insta %}
+                            <div class="insta_photos"><div class="insta_photo"><img src="{{ domain }}{{ img }}{{ photo.img }}"></div></div>
+                        {% endfor %}
+                        </div>
+                    </div>

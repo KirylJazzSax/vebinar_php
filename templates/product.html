@@ -1,0 +1,49 @@
+{% block product %}
+{% for product in content_data %}
+{% set sale %}
+    <div class="product_price_sale">€.{{ product.price }}</div>
+{% endset %}
+
+{% set count %}
+    <div class="text">Этот товар уже в корзине: {{ product.count }}<br>
+        <a href="{{ domain }}/basket" class="link">В корзину?</a></div>
+{% endset %}
+
+<div class="new_products"><a href="">{{product.name}}</a></div>
+    <div class="new_products_contents_product">
+        <div class="picture_product"><a href="{{ product.id }}"><img src="{{ domain }}{{ img }}{{ product.img }}"></a></div>
+        <hr>
+        <div class="short_description">
+            <h4>Short Descripton</h4>
+            {{ product.short_description }}</div>
+        <hr>
+        {% block button %}
+        <div class="buy"><input type="button" name="addToBasket" value="Купить"
+                                id="{{ product.id }}"
+                                count="{{ product.count }}"
+                                prim="now we are talking" data-product-guid="{{product.ID_UUID}}"
+                                onclick="add_basket_one('#{{ product.id }}')">
+        </div>
+        {% endblock %}
+            <div class="nameAndPrice_product">
+                <div class="product_name"><a href="{{ product.id }}">{{ product.name }}</a></div>
+                <div class="product_price_product">
+                    €.{{ product.status == 1 ? product.salePrice : product.price }}
+                </div>
+                {{ product.status == 1 ? sale : false }}
+                {% block view %}
+                <div class="views">{{ product.count ? count : false }}<br>
+                    Колличество просмотров: {{ product.view }}
+                </div>
+                {% endblock %}
+            </div>
+        {% block description %}
+        <div class="description">
+            <h4>Main Description</h4>
+            {{ product.description }}
+        </div>
+        {% endblock %}
+</div>
+{% endfor %}
+{% endblock %}
+

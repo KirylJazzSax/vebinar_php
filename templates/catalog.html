@@ -1,0 +1,13 @@
+{% for category in content_data %}
+    <div class="new_products"><a href="{{ domain }}/catalog/{{ category.url }}">{{ category.name }}</a></div>
+            <div class="new_products_contents">
+                    {% for cat in category.child %}
+                        <div class="new_products_content">
+                                <div class="picture"><a href="{{ domain }}/catalog/{{ category.url }}/{{ cat.url }}"><img src="{{ domain }}{{ img }}{{ cat.img }}"></a></div>
+                                <div class="nameAndPrice">
+                                    <div class="product_name"><a href="{{ cat.id_category }}">{{ cat.name }}</a></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+{% endfor %}
