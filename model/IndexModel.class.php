@@ -9,5 +9,8 @@ class IndexModel extends Model
         parent::__construct();
     }
 
-    public function index($data = null, $deep = 0){}
+    public function index($data = null, $deep = 0)
+    {
+
+    }
 }
